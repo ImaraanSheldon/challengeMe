@@ -118,6 +118,75 @@ router.post('/users',bodyParser.json(), (req, res)=>{
         msg: 'sup gng'
       })
 })
+router.post('/products',bodyParser.json(), (req, res)=>{
+    let data = req.body;
+    let product = {
+        productName: data.productName,
+        productQuantity: data.productQuantity,
+        productPrice: data.productPrice,
+        productURL: data.productURL
+      }
+    dataB.query(`INSERT INTO Products SET ?;`, [product])
+      res.json({
+        status: 200,
+        msg: 'sup gng'
+      })
+})
+router.patch('/products/:id', bodyParser.json(), (req, res) => {
+    const productId = req.params.id; // Ensure you're capturing the product ID from the route
+    const data = req.body;
+
+    const fields = [];
+    const values = [];
+
+    if (data.productName !== undefined) {
+        fields.push('productName = ?');
+        values.push(data.productName);
+    }
+    if (data.productQuantity !== undefined) {
+        fields.push('productQuantity = ?');
+        values.push(data.productQuantity);
+    }
+    if (data.productPrice !== undefined) {
+        fields.push('productPrice = ?');
+        values.push(data.productPrice);
+    }
+    if (data.productURL !== undefined) {
+        fields.push('productURL = ?');
+        values.push(data.productURL);
+    }
+
+    if (fields.length === 0) {
+        res.status(400).json({ status: 400, msg: 'No fields to update' });
+    } else {
+        values.push(productId);
+
+        const sql = `UPDATE Products SET ${fields.join(', ')} WHERE productID = ?`;
+
+        dataB.query(sql, values, (err, result) => {
+            if (err) {
+                res.status(500).json({ status: 500, msg: 'Database error', error: err });
+            } else if (result.affectedRows === 0) {
+                res.status(404).json({ status: 404, msg: 'Product not found' });
+            } else {
+                res.json({ status: 200, msg: 'Product updated successfully' });
+            }
+        });
+    }
+});
+router.delete('/products/:id', (req, res) => {
+    const productId = req.params.id;
+    console.log(productId);
+    const sqlDelete = 'DELETE FROM Products WHERE productID = ?';
+
+    dataB.query(sqlDelete, [productId], (err) => {
+        if (err) {
+            res.status(500).json({ status: 500, msg: 'Database error', error: err });
+        } else {
+            res.json({ status: 200, msg: 'Product deleted successfully' });
+        }
+    });
+});
 app.listen(port, ()=>{
     console.log(`Server on port: ${port}`)
 })

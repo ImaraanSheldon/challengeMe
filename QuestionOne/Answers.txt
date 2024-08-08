@@ -1,0 +1,107 @@
+Q1: What does API stand for?
+
+A1: API stands for Application Programming Interface.
+
+Q2: What is the use of API?
+
+A2: An API is a set of rules and protocols that allows different software applications to communicate with each other. It enables developers to access the functionality of a system, application, or platform, often over the internet, without needing to know its internal workings. APIs can be used to access web services, interact with databases, and integrate with third-party services.
+
+Q3: What are the steps we use to create our API?
+
+A3: Creating an API typically involves the following steps: Define Requirements: Determine what the API needs to do and what data it will provide or accept.
+Design the API: Decide on the endpoints, request/response formats (usually JSON or XML), and HTTP methods (GET, POST, PUT, DELETE) that the API will use.
+Set Up the Environment: Choose a programming language and framework (e.g., Node.js with Express) and set up the development environment.
+Implement Endpoints: Write the code for the API endpoints, including logic for handling requests and sending responses.
+Test the API: Use tools like Postman or automated tests to ensure the API behaves as expected.
+Deploy the API: Host the API on a server or cloud service, making it accessible to users.
+Document the API: Provide clear documentation for users on how to interact with the API.
+
+Q4: Define a middleware.
+
+A4: Middleware is a function in a web application that processes requests and responses. It acts as a bridge between the client request and server response, allowing you to add functionality such as logging, authentication, and error handling. In Express.js, middleware functions can modify the request and response objects, end the request-response cycle, or call the next middleware function in the stack.
+
+Q5: What does NPM stand for?
+
+A5: NPM stands for Node Package Manager.
+
+Q6: What kind of module or package do we need to install using npm?
+
+A6: You can install various types of modules or packages using npm, including: Libraries: External code libraries to extend functionality, like express for web servers or axios for HTTP requests.
+Frameworks: Complete frameworks like express for building web applications.
+Tools: Development tools like eslint for linting code or webpack for bundling assets.
+Plugins: Plugins for existing tools or frameworks.
+
+Q7: To install Express, which command will you use?
+
+A7: npm i express
+
+Q8: What is the difference between mysql and mysql2 node modules?
+
+A8: mysql: An older module for connecting to MySQL databases. It has been largely replaced by mysql2 due to its limitations.
+mysql2: A newer module with better performance and support for features like Promises and modern MySQL features. It is a drop-in replacement for mysql, providing enhanced functionality.
+
+Q9: What is the use of express.static?
+
+A9: express.static is a built-in middleware function in Express that serves static files such as HTML, CSS, JavaScript, and images. It is used to specify a directory from which to serve static assets.
+
+Q10: Please list at least three middleware that are considered application-level middleware?
+
+A10: express.json(): Parses incoming JSON requests and puts the parsed data in req.body.
+express.urlencoded(): Parses incoming requests with URL-encoded payloads and puts the parsed data in req.body.
+Custom Middleware: Any custom function you define to handle requests, such as logging middleware.
+
+Q11: Why should we use .gitignore in our API?
+
+A11: A .gitignore file specifies intentionally untracked files that Git should ignore. It is used to prevent sensitive or unnecessary files (e.g., environment variables, node_modules, build artifacts) from being committed to the repository.
+
+Q12: Is the file gitignore valid? Please explain your reason?
+
+A12: The .gitignore file is valid if it contains paths or patterns of files and directories you want Git to ignore. It is not a script or configuration file but a plain text file with lines specifying what should be excluded.
+
+Q13: Which command is used to set up a node application upon startup?
+
+A13: npm init -y
+
+
+Q14: What is the use of the .env file?
+
+A14: The .env file is used to store environment variables in a key-value format. It is useful for managing configuration settings and sensitive data such as API keys, database credentials, and server ports, without hardcoding them into the application. You typically use the dotenv package to load these variables into process.env.
+
+Q15: Tell me why the package.json is important?
+
+A15: The package.json file is crucial for Node.js projects because it:
+Defines the project and its metadata (e.g., name, version, description).
+Lists the project's dependencies, enabling easy installation and management via npm.
+Specifies scripts for tasks like testing, building, and starting the application.
+Provides a standard structure for others to understand and work with the project.
+
+Q16: What distinguishes the MySQL/2 module's createConnection and createPool functions from one another?
+
+A16: createConnection: Establishes a single connection to the database. This connection can be used for executing queries, but it does not handle reconnections or multiple simultaneous operations efficiently.
+createPool: Creates a pool of connections. It efficiently manages multiple connections, allowing for concurrent database operations and automatically handling reconnections and load balancing.
+
+Q17: Please provide a list of all the properties that we utilized in createPool along with an explanation for each.
+
+A17: When using createPool, you can specify various properties. Here are some commonly used ones:
+host: The hostname of the database server.
+user: The username for authentication.
+password: The password for authentication.
+database: The name of the database to connect to.
+connectionLimit: The maximum number of connections to create at once.
+waitForConnections: Determines whether to queue connection requests if no connections are available.
+queueLimit: The maximum number of queued connection requests (0 means no limit).
+port: The port number to connect to.
+
+Q18: What is the difference between import and export?
+
+A18: import: Used to bring in functions, objects, or primitives from another module or file. It allows you to use code from other modules in your current file.
+export: Used to make functions, objects, or primitives available to other modules. It allows your code to be used in other files.
+There are two types of exports: named exports and default exports.
+
+Q19: What is the difference between express.json() and express.urlencoded()?
+
+A19: express.json(): Middleware that parses incoming requests with JSON payloads. It makes the parsed data available in req.body.
+
+express.urlencoded(): Middleware that parses incoming requests with URL-encoded payloads, which are typically used for HTML form submissions. It also makes the parsed data available in req.body.
+
+The primary difference is in the format they handle: express.json() is for JSON data, while express.urlencoded() is for URL-encoded data.
